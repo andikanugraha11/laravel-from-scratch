@@ -15,9 +15,11 @@ class PostsController extends Controller
     {
         //
         $data = array(
-            'posts' => Posts::all()
+            // 'posts' => Posts::all()
+            'posts' => Posts::orderBy('title','asc')->paginate(1)
         );
         // $post =  Posts::all();
+        // return Posts::where('title', 'Post One')->get();
         return view('post.index')->with($data);
     }
 
@@ -50,7 +52,12 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        //get all
+        $post = Posts::find($id);
+        $data = array(
+            'post' => $post
+        );
+        return view('post.show')->with($data);
     }
 
     /**
@@ -74,6 +81,7 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
