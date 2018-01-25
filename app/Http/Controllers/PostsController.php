@@ -16,10 +16,11 @@ class PostsController extends Controller
         //
         $data = array(
             // 'posts' => Posts::all()
-            'posts' => Posts::orderBy('title','asc')->paginate(1)
+            'posts' => Posts::orderBy('title','asc')->paginate(10)
         );
         // $post =  Posts::all();
         // return Posts::where('title', 'Post One')->get();
+        // return count($data['posts']);
         return view('post.index')->with($data);
     }
 
@@ -30,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -41,7 +42,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required'
+        ]);
+
+        return $request;
     }
 
     /**
