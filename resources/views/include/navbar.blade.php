@@ -10,11 +10,16 @@
         <a class="navbar-brand" href="#">{{config('app.name')}}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/dashboard">Home</a></li>
-            <li><a href="/dashboard/user">User</a></li>
-            <li><a href="/posts">Posts</a></li>
-        </ul>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/dashboard">Home</a></li>
+                <li><a href="/dashboard/user">User</a></li>
+                <li><a href="/posts">Posts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{route('posts.create')}}">Add Post</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

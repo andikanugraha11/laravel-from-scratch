@@ -16,7 +16,7 @@ class PostsController extends Controller
         //
         $data = array(
             // 'posts' => Posts::all()
-            'posts' => Posts::orderBy('title','asc')->paginate(10)
+            'posts' => Posts::orderBy('created_at','asc')->paginate(3)
         );
         // $post =  Posts::all();
         // return Posts::where('title', 'Post One')->get();
@@ -46,7 +46,12 @@ class PostsController extends Controller
             'title' => 'required'
         ]);
 
-        return $request;
+        $post = new Posts;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        return redirect('/posts')->with('success', 'Berhasil di tambah');
     }
 
     /**
