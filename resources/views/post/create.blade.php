@@ -10,7 +10,7 @@
         </div>
         <div class="form-group">
             <label for="">Body</label>
-            <textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea>
+            <textarea class="form-control" name="body" id="article-ckeditor" cols="30" rows="10"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
