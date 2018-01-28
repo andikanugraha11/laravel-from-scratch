@@ -27,4 +27,5 @@ Route::get('/dashboard-home', function(){
 // Controller
 Route::get('/dashboard','DashboardController@index');
 Route::get('/dashboard/user','DashboardController@user');
+Route::get('/posts/oke','PostsController@testah');
 Route::resource('posts','PostsController');
