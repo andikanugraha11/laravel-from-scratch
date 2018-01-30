@@ -49,6 +49,7 @@ class PostsController extends Controller
         $post = new Posts;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->author_id = auth()->user()->id;
         $post->save();
 
         return redirect('/posts')->with('success', 'Berhasil di tambah');
