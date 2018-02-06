@@ -68,7 +68,8 @@ class PostsController extends Controller
         $data = array(
             'post' => $post
         );
-        return view('post.show')->with($data);
+        return $data;
+        // return view('post.show')->with($data);
     }
 
     /**

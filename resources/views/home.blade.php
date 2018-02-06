@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @foreach ($posts as $post)
+                        {{$post->title}}
+                    @endforeach
                 </div>
             </div>
         </div>
