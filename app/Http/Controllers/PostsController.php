@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 use App\Posts;
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -68,8 +78,8 @@ class PostsController extends Controller
         $data = array(
             'post' => $post
         );
-        return $data;
-        // return view('post.show')->with($data);
+        // return $data;
+        return view('post.show')->with($data);
     }
 
     /**
@@ -85,7 +95,12 @@ class PostsController extends Controller
         $data = array(
             'post' => $post
         );
-        return view('post.edit')->with($data);
+        if(auth()->user()->id !== $post->author_id){
+            return redirect('/posts')->with('error', 'Unauthorize');
+        }else{
+            return view('post.edit')->with($data);
+        }
+        
     }
 
     /**

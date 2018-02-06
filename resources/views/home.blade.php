@@ -36,8 +36,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        
-                        
                     </table>
                     @else
                         <p>Tidak ada post</p>
