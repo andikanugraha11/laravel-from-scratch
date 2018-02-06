@@ -134,9 +134,16 @@ class PostsController extends Controller
     {
         //
         $post = Posts::find($id);
-        $post->delete();
 
-        return redirect('/posts')->with('success', 'Post dihapus');
+        if(auth()->user()->id !== $post->author_id){
+            return redirect('/posts')->with('error', 'Unauthorize');
+        }else{
+            $post->delete();
+            return redirect('/posts')->with('success', 'Post dihapus');
+        }
+        
+
+        
     }
 
     public function testah()
