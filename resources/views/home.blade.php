@@ -13,10 +13,27 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @foreach ($posts as $post)
-                        {{$post->title}}
-                    @endforeach
+                    @if (count($posts) > 0)
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Judul</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        
+                            @foreach ($posts as $post)
+                                <tr>
+                                    <td>{{$post->title}}</td>
+                                    <td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-info">Edit</a></td>
+                                    <td></td>
+                                </tr>
+                            @endforeach
+                        
+                        
+                    </table>
+                    @else
+                        <p>Tidak ada post</p>
+                    @endif
                 </div>
             </div>
         </div>
